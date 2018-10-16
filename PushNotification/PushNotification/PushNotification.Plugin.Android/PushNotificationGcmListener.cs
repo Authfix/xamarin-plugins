@@ -62,7 +62,7 @@ namespace PushNotification.Plugin
 
                     Context context = Android.App.Application.Context;
 
-                    CrossPushNotification.PushNotificationListener.OnMessage(values, DeviceType.Android);
+                    CrossPushNotification.PushNotificationListener?.OnMessage(values, DeviceType.Android);
 
                     try
                     {
@@ -181,7 +181,7 @@ namespace PushNotification.Plugin
 
                         if (!parameters.ContainsKey(PushNotificationKey.Silent) || !System.Boolean.Parse(parameters[PushNotificationKey.Silent].ToString()))
                         {
-                            if (CrossPushNotification.PushNotificationListener.ShouldShowNotification())
+                            if (CrossPushNotification.PushNotificationListener == null || CrossPushNotification.PushNotificationListener.ShouldShowNotification())
                             {
                                 CreateNotification(title, message, notifyId, tag, extras);
                             }
@@ -251,7 +251,7 @@ namespace PushNotification.Plugin
             const int pendingIntentId = 0;
             var currentMillis = (long)DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
             PendingIntent resultPendingIntent = PendingIntent.GetActivity(context, pendingIntentId, resultIntent, PendingIntentFlags.OneShot | PendingIntentFlags.UpdateCurrent );
-            resultPendingIntent.SetAction($"{currentMillis}");
+            
             // Build the notification
             builder = new NotificationCompat.Builder(context)
                       .SetAutoCancel(true) // dismiss the notification from the notification area when the user clicks on it

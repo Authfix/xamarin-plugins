@@ -1,31 +1,18 @@
-using Android.App;
 using Android.Content;
 using PushNotification.Plugin.Abstractions;
-using System;
-using System.Threading.Tasks;
-using Android.Gms.Common;
-using Java.Util.Logging;
 using Android.Gms.Gcm;
-using Android.Util;
 using Java.Lang;
 using Android.Content.PM;
-using Android.OS;
-using System.Collections.Generic;
-using Android.Preferences;
-using Android.Support.V4.App;
-using Android.Media;
-using Android;
-using Android.Gms.Gcm.Iid;
 using System.Threading;
 using Java.IO;
-
+using Android.Gms.Iid;
 
 namespace PushNotification.Plugin
 {
-	  /// <summary>
-	  /// Implementation for Feature
-	  /// </summary>
-        public class PushNotificationImplementation : IPushNotification
+    /// <summary>
+    /// Implementation for Feature
+    /// </summary>
+    public class PushNotificationImplementation : IPushNotification
         {
             private const string GcmPreferencesKey = "GCMPreferences";
             private int DefaultBackOffMilliseconds = 3000;
