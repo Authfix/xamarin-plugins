@@ -253,7 +253,7 @@ namespace PushNotification.Plugin
             PendingIntent resultPendingIntent = PendingIntent.GetActivity(context, pendingIntentId, resultIntent, PendingIntentFlags.OneShot | PendingIntentFlags.UpdateCurrent );
             
             // Build the notification
-            builder = new NotificationCompat.Builder(context)
+            builder = new NotificationCompat.Builder(context, "default")
                       .SetAutoCancel(true) // dismiss the notification from the notification area when the user clicks on it
                       .SetContentIntent(resultPendingIntent) // start up this activity when the user clicks the intent.
                       .SetContentTitle(title) // Set the title
